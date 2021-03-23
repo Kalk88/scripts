@@ -9,7 +9,7 @@ echo  Watching ${FOLDER}, running ${COMMAND} on changes...
 inotifywait -e modify -r -m ${FOLDER} |
 while read dir event file; do
         # dir event file is the format of inotifywait events. but we only watch
-        # we only watch for modify
+        # for modify events so we can always run the given command.
         # create a subshell and run the command from the script callers location
         $(cd $(pwd) && echo "${COMMAND}")
 done
